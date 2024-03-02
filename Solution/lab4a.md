@@ -7,7 +7,7 @@
 ### Answer
 
 ```
-ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBbpOeshZjo5sgYc6ItLkYN43qT8HJwHl8h21oSO441O skyzheng@Sky's MacBook Pro
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AABAIBbpOeshZjo5sgYc6ItLkYN43qT8HJwHl8h21oSO441O skyzheng@Sky's MacBook Pro
 ```
 
 ## Q2
@@ -32,7 +32,7 @@ However, other group members have only read permission of the public key and no 
 
 3. Save and Quit
 
-4. Reload the `sshd` service using `sudo systemctl reload sshd` (system using `systemctl`)`
+4. Reload the `sshd` service using `sudo systemctl reload sshd` (system using `systemctl`)
 
 ## Q3
 
@@ -56,8 +56,8 @@ New profiles: skip
 
 To                         Action      From
 --                         ------      ----
-22                         ALLOW IN    10.147.19.0/24
-9993                       ALLOW IN    10.147.19.0/24
+22                         ALLOW IN    10.147.18.0/24
+9993                       ALLOW IN    10.147.18.0/24
 ```
 
 ## Q5
@@ -66,7 +66,14 @@ To                         Action      From
 
 ### Answer
 
+Setting up a firewall is important because it acts as a barrier that controls the traffic between your internal network and untrusted external networks, such as the internet. It helps to prevent unauthorized access and cyber attacks.
 
+Exposing a port can be risky because it may:
+
+1. Allow attackers to access or attack the system if the service on the port is vulnerable.
+2. Be targeted for exploitation, leading to unauthorized access or data breaches.
+3. Be overwhelmed by traffic in a Denial of Service (DoS) attack.
+4. Allow sensitive data to be intercepted if not encrypted.
 
 ## EC2
 

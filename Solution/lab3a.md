@@ -81,7 +81,7 @@ Device       Start      End Sectors  Size Type
 
 ## Q6
 
-**Run `lsblk` to see the hierarchy of these partitions. **
+**Run `lsblk` to see the hierarchy of these partitions.**
 
 ### Answer
 
@@ -102,7 +102,7 @@ sr0            11:0    1 932.3M  0 rom   /run/archiso/bootmnt
 
 ### Answer
 
-**the `mkfs.fat -F32 /dev/sda1` command. **
+**the `mkfs.fat -F32 /dev/sda1` command.**
 
 #### Difference
 
@@ -137,7 +137,7 @@ The `mkfs.fat` command is used to format a boot partition, which doesn't require
 
 **`hostname -f`: arch**
 
-**`ip addr`: **
+**`ip addr`:**
 
 ```
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
