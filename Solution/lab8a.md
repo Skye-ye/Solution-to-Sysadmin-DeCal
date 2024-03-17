@@ -14,7 +14,7 @@ class hacked::hacking {
         mode    => '0755',
         require => Package['figlet', 'lolcat', 'jp2a'];
     
-      '/home/skyzheng/pwned.jpg':
+      '/home/your_username/pwned.jpg':
         ensure  => file,
         source  => 'puppet:///modules/hacked/pwned.jpg',
         mode    => '0644';
@@ -22,12 +22,12 @@ class hacked::hacking {
 
     cron { 'hack_everything_job':
       ensure  => present,
-      command => '/usr/local/bin/hack_everything >> /home/skyzheng/hackzored.txt',
-      user    => 'skyzheng',
+      command => '/usr/local/bin/hack_everything >> /home/your_username/hackzored.txt',
+      user    => 'your_username',
       minute  => '*/30',
       require => [
         File['/usr/local/bin/hack_everything'],
-        File['/home/skyzheng/pwned.jpg']
+        File['/home/your_username/pwned.jpg']
       ],
     }
     
