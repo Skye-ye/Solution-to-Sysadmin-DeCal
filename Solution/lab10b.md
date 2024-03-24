@@ -72,4 +72,4 @@ cron { 'getquote':
 }
 ```
 
-**Tip**: you may need to set envrionment vairable `"PATH=$PATH"` when executing the `puppet apply` command using `sudo env "PATH=$PATH" puppet apply quotes.pp`, since `sudo` overwrite `"$PATH"` to "secure_path" which may not include your `puppet` module directory. You can see your "secure_path" in `visudo` using `sudo visudo`.
+**Tip**: you may need to set envrionment vairable `"PATH=$PATH"` when executing the `puppet apply` command using `sudo env "PATH=$PATH" puppet apply quotes.pp` since `sudo` overwrite `"$PATH"` to "secure_path" which may not include your `puppet` module directory. You can see your "secure_path" in `visudo` using `sudo visudo`.
