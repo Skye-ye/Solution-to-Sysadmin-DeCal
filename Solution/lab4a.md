@@ -2,27 +2,17 @@
 
 ## Q1
 
-**Paste the contents of `~/.ssh/authorized_keys` from your student VM.**
-
-### Answer
-
 ```
 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AABAIBbpOeshZjo5sgYc6ItLkYN43qT8HJwHl8h21oSO441O skyzheng@Sky's MacBook Pro
 ```
 
 ## Q2
 
-**What are the permissions on your public key and private key? Why do you think they are the way they are?**
-
-### Answer
-
 The owner(me) has the permission to read and write both public and private key, which is acceptable since the owner created the keys and should have the access to them. 
 
 However, other group members have only read permission of the public key and no permission for the private key. This is also natural since the public key is open to everyone and the private key should be kept secretly to the owner.
 
 ## EC1
-
-**configure `sshd` to only allow key-based login**
 
 ### Steps
 
@@ -36,17 +26,9 @@ However, other group members have only read permission of the public key and no 
 
 ## Q3
 
-**What command did you use to enable a port?**
-
-### Answer
-
 `sudo ufw allow <port>`
 
 ## Q4
-
-**Paste the output of `sudo ufw status verbose`. Make sure you can clearly see the changes you made in the steps above!**
-
-### Answer
 
 ```
 Status: active
@@ -62,10 +44,6 @@ To                         Action      From
 
 ## Q5
 
-**Why is setting up a firewall important? What are some security concerns that might arise from exposing a port?**
-
-### Answer
-
 Setting up a firewall is important because it acts as a barrier that controls the traffic between your internal network and untrusted external networks, such as the internet. It helps to prevent unauthorized access and cyber attacks.
 
 Exposing a port can be risky because it may:
@@ -77,17 +55,9 @@ Exposing a port can be risky because it may:
 
 ## EC2
 
-**Allow the above, but only for IPs originating from UC Berkeley’s subnet. UC Berkeley has 3 primary `/16`s.**
-
-### Steps
-
-1. `sudo ufw allow from x.x.x.x/16 to any port 22`
+`sudo ufw allow from x.x.x.x/16 to any port 22`
 
 ## EC3
-
-**Configure `fail2ban` to block IP addresses that are trying to brute-force your SSH password.**
-
-### Steps
 
 1. `sudo apt update && sudo apt install fail2ban` to install fail2ban
 

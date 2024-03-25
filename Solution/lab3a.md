@@ -2,13 +2,9 @@
 
 ## Q1
 
-**Who is the developer that created this signature, and what is their key's fingerprint?**
+Developer: Pierre Schmitz
 
-### Answer: 
-
-**Developer: Pierre Schmitz**
-
-**Fingerprint: 3E80 CA1A 8B89 F69C BA57 D98A 76A5 EF90 5444 9A5C**
+Fingerprint: 3E80 CA1A 8B89 F69C BA57 D98A 76A5 EF90 5444 9A5C
 
 ```
 gpg: assuming signed data in 'archlinux-2024.02.01-x86_64.iso'
@@ -29,19 +25,11 @@ Primary key fingerprint: 3E80 CA1A 8B89 F69C BA57  D98A 76A5 EF90 5444 9A5C
 
 ## Q2
 
-**What is the current hostname? What is your IP address**
+Hostname: arches
 
-### Answer
-
-**Hostname: arches**
-
-**IP address: 192.168.122.29**
+IP address: 192.168.122.29
 
 ## Q3
-
-**Give a brief and basic explanation of the purpose of having (1) the EFI system partition and (2) the swap partition.**
-
-### Answer
 
 #### EFI System Partition
 
@@ -52,17 +40,9 @@ The swap partition serves as overflow space for your computer's RAM. If your sys
 
 ## Q4
 
-**Test your understanding: What would be the name of the device file corresponding to the fourth partition on the second discovered storage device?**
-
-### Answer
-
-**sdb4**
+sdb4
 
 ## Q5
-
-**To see your final results, run `fdisk -l /dev/sda` and paste the output into Gradescope.**
-
-### Answer
 
 ```
 Disk /dev/sda: 5 GiB, 5368709120 bytes, 10485760 sectors
@@ -81,10 +61,6 @@ Device       Start      End Sectors  Size Type
 
 ## Q6
 
-**Run `lsblk` to see the hierarchy of these partitions.**
-
-### Answer
-
 ```
 NAME          MAJ:MIN RM   SIZE RO TYPE  MOUNTPOINTS
 loop0           7:0    0 766.5M  1 loop  /run/archiso/airootfs
@@ -98,11 +74,7 @@ sr0            11:0    1 932.3M  0 rom   /run/archiso/bootmnt
 
 ## Q7
 
-**What previous command we ran is similar to this command, and what’s the difference? (Bonus: why?)**
-
-### Answer
-
-**the `mkfs.fat -F32 /dev/sda1` command.**
+the `mkfs.fat -F32 /dev/sda1` command.
 
 #### Difference
 
@@ -125,17 +97,9 @@ The `mkfs.fat` command is used to format a boot partition, which doesn't require
 
 ## Q9
 
-**Hypothetically, if we had made a separate `/home` partition and filesystem in the previous steps, what command(s) would we need to run to mount it? Assume the `/home` partition is `/dev/sda3`.**
-
-### Answer
-
 ## Q10
 
-**To show off your newly installed Arch system, run the following commands and paste the output into Gradescope**
-
-### Answer
-
-**`hostname -f`: arch**
+**`hostname -f`:** arch
 
 **`ip addr`:**
 

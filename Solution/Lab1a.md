@@ -1,66 +1,73 @@
 # Solution to Lab1a
+## Question 1
+```bash
+curl -s https://raw.githubusercontent.com/0xcf/decal-labs/master/a1/albums.txt | \
+    grep ', Future' | \
+    cut -d',' -f1 | \
+    while read album; \
+    do mkdir -p "$album"; \
+    done
+```
+## Question 2
+```bash
+# car.sh
+#!/bin/bash
+   
+first_dir="${1#/}"
+first_dir="${first_dir%%/*}"
+   
+echo "$first_dir"
+```
 
-1. ```bash
-   curl -s https://raw.githubusercontent.com/0xcf/decal-labs/master/a1/albums.txt | grep ', Future' | cut -d',' -f1 | while read album; do mkdir -p "$album"; done
-   ```
-
-2. ```car.sh
-   #!/bin/bash
+```bash
+# cdr.sh
+#!/bin/bash
    
-   first_dir="${1#/}"
-   first_dir="${first_dir%%/*}"
+echo "${1##*/}"
+```
+## Question 3
+```bash
+# rename.sh
+#!/bin/bash
    
-   echo "$first_dir"
-   ```
-
-   ```cdr.sh
-   #!/bin/bash
+if [ "$#" -ne 3 ]; then
+    echo "Usage: $0 <directory> <original extension> <new extension>"
+    exit 1
+fi
    
-   echo "${1##*/}"
-   ```
-
-3. ```rename.sh
-   #!/bin/bash
+directory=$1
+original=$2
+new=$3
    
-   if [ "$#" -ne 3 ]; then
-       echo "Usage: $0 <directory> <original extension> <new extension>"
-       exit 1
-   fi
+if [ "$original" = "$new" ]; then
+    echo "Original and new extensions are the same. No files to rename."
+    exit 0
+fi
    
-   directory=$1
-   original=$2
-   new=$3
+cd "$directory" || { echo "Directory not found"; exit 1; }
    
-   if [ "$original" = "$new" ]; then
-       echo "Original and new extensions are the same. No files to rename."
-       exit 0
-   fi
+for file in *.$original; do
+    newfile="${file%.$original}.$new"
+    if [ -f "$file" ]; then
+        echo "renaming $directory/$file to $directory/$newfile"
+        mv "$file" "$newfile"
+    fi
+done
+```
+## Question 4
+```bash
+# mkrandom.sh
+#!/bin/bash
    
-   cd "$directory" || { echo "Directory not found"; exit 1; }
+if [ "$#" -ne 2 ]; then
+    echo "Usage: $0 <number of files> <size of each file in bytes>"
+    exit 1
+fi
    
-   for file in *.$original; do
-       newfile="${file%.$original}.$new"
-       if [ -f "$file" ]; then
-           echo "renaming $directory/$file to $directory/$newfile"
-           mv "$file" "$newfile"
-       fi
-   done
-   ```
-
-4. ```mkrandom.sh
-   #!/bin/bash
+num=$1
+size=$2
    
-   if [ "$#" -ne 2 ]; then
-       echo "Usage: $0 <number of files> <size of each file in bytes>"
-       exit 1
-   fi
-   
-   num=$1
-   size=$2
-   
-   for ((i = 1; i <= $num; i++)); do
-       head -c "$size" /dev/urandom > "$i"
-   done
-   ```
-
-   
+for ((i = 1; i <= $num; i++)); do
+    head -c "$size" /dev/urandom > "$i"
+done
+```

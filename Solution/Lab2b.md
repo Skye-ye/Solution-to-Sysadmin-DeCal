@@ -1,5 +1,10 @@
 # Solution to Lab2b
 
+## Pipes and Redirection
+
+1. `grep -i -v '[aeiouy]' words.txt | head -10`
+2. `grep -i '\b.*cal.*\b' your_wordlist_file.txt | awk 'length($0) >= 7' > cal.txt`
+
 ## Vim
 
 1. Use `10kd10d` or `:.-10,.d`

@@ -5,15 +5,12 @@
 2. The `systemctl reload yourservice` command is used to reload the configuration of a service without interrupting its current operation. It is useful to maintain the service status. 
 
    The `systemctl restart yourservice` command stops the service and then starts it again. It's a more forceful way to apply changes or recover a service than `reload`
-3. 
 
-![nginx](../Image/nginx.png)
-
-4. Command I use: 
+3. Command I use: 
 ```bash
 curl -X POST -H "Content-Type: application/json" -d '{"crash":"true"}' http://localhost:5000/crash
 ```
-5. toy.service:
+4. toy.service:
 
 ```
 [Unit]
