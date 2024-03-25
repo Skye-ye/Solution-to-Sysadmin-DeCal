@@ -84,5 +84,14 @@
         return
    ```
 
-   
+## Part 2: Pull Requests
 
+[my pull request](https://github.com/0xcf/decal-pr-practice/pull/346)
+
+## Part 3: Questions
+
+1. The difference between the same file in different branches.
+2. Because only human can determine which code to be preserved.
+3. `rsync -av ~/Downloads/Linux_ISOs/ /usr/local/share/Calendar/`
+4. C
+5. "abcd"
