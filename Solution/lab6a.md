@@ -29,7 +29,7 @@ iface test inet static
 
 ## Q3a
 
-1. You should add `hosts: dns files` to the "**/etc/nsswitch.conf** " file.
+1. You should add `hosts: dns files` to the **/etc/nsswitch.conf**  file.
 
 ## Q3b
 
@@ -38,4 +38,57 @@ iface test inet static
 
 
 ## Exercise
+
+### 2.py
+
+1. I found that my network connectivity is lost and websites can't be accessed.
+2. I tried to `ping -c 4 8.8.8.8` and `ping -c 4 google.com` but failed.
+3. Then I checked route table using `route -n` and found the gateway of my default interface was changed to my computer ip, which led to the network connection lost.
+4. Simpliy `sudo systemctl restart networking` and `sudo systemctl restart NetworkManager` will help.
+
+### 3.py
+
+1. I found that I couldn't open "google.com". But other websites can still be accessed.
+2. I `ping google.com` and succeeded, so I think that the network connection is sound but the DNS entry of "google.com" may be changed.
+3. I ran `dig google.com` and found that the ip of "google.com" was set to "72.66.115.13"
+4. To fix this, I edited the **/etc/hosts** , deleting the entry and saved.
+### 5.py
+
+1. I found that all the domain entry has been set to 72.66.115.13 (Does this ip has special meanings?) after running `dig <domain_name>` with several websites.
+
+2. I also found that when I ran `dig` command, there's always error message:
+
+   ```
+   communications error to <my_computer_ip>#53: connection refused
+   ```
+
+   It seems that my DNS server is not running correctly.
+
+3. Then I checked **/etc/hosts**, nothing weired.
+
+4. But something seems to be changed in **/etc/resolv.conf** because the nameserver is set to 127.0.0.1, which used to be 127.0.0.53.
+
+5. I ran `sudo netstat -peanut` to check which service is listening 127.0.0.1 and I found it's `dnsmasq`. By the way, `systemd-resolve` is listening 127.0.0.53
+
+6. So I ran to **/etc/dnsmasq.conf**, the content is:
+   ```
+   no-dhcp-interface=
+   server=8.8.8.8
+   
+   no-hosts
+   addn-hosts=/etc/dnsmasq.hosts
+   address=/com/72.66.115.13
+   ```
+
+   and the content in **/etc/dnsmasq.hosts** is:
+
+   ```
+   72.66.115.13 www.facebook.com facebook.com
+   ```
+
+   The problem is clear: system nameserver is set to 127.0.0.1, which is listened by `dnsmasq`, and in **/etc/dnsmasq.conf**, every domain suffixed with "com" will be directed to 72.66.115.13. In **/etc/dnsmasq.hosts**, Facebook.com is bound to 72.66.115.13.
+
+7. So the solution is deleting these two lines and restart `dnsmasq` service using `systemctl`. Everything wents well.
+
+8. Tips: you had better to change the content in **/etc/resolv.conf** back using the backup in **/etc/resolv.conf.bak**.
 
